@@ -1,0 +1,131 @@
+img {
+    margin: 0 auto;
+    width: 20vw;
+}
+
+img#profilePic {
+    border-radius: 40%;
+}
+
+body {
+    background-color: #1B4B31;
+    font-size: 150%;
+}
+
+.Top,
+#Projects h2,
+h3,
+h4 {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #E61557;
+}
+
+p,
+footer a {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: .9em;
+    color: #A05F73;
+}
+
+header,
+main,
+footer {
+    margin: 0 auto;
+    width: 90vw;
+}
+
+h1,
+h2,
+ul,
+p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+hr {
+    border-top: 1px solid #15E62A;
+}
+
+/* Grid Box for page */
+#Gridmain {
+    display: grid;
+    grid-template-areas: "headshot bio"
+        "controls controls"
+        "projects projects";
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    border-left: 1px dashed #15E62A;
+    border-right: 1px dashed #15E62A;
+}
+
+.headshot{
+    grid-area: headshot;
+}
+
+.bio{
+    grid-area: bio;
+}
+
+.widgets {
+    width: 48%;
+    padding: 15px 6px;
+    grid-area: controls;
+}
+
+.box {
+    grid-area: projects;
+}
+
+#Cards #content {
+    display: flex;
+    border-top: .5px solid #15E62A;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: .3rem;
+}
+
+#Cards #content img{
+    height: 14.2rem;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: .3rem;
+    flex-grow: 1;
+}
+
+/* Link Styling */
+a:link {
+    color: #E61558;
+}
+
+a:visited {
+    color: #3b121f;
+}
+
+a:focus {
+    color: #f00650;
+}
+
+a:hover {
+    color: #e32b65cf;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #e61557c7;
+    text-decoration: none;
+}

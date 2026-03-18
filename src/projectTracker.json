@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Jamaica Data Visualization",
+    "type": "Creative",
+    "date": "03/18/2026",
+    "image": "./media/thunbnails/JamVis.png",
+    "link": "https://people.rit.edu/~slt1494/NewMediaBlogs/Visualization.html",
+    "skills": [
+      "Python"
+    ],
+    "apps/tools": [
+      "TouchDesigner"
+    ]
+  },
+  {
+    "title": "Deck Builder API",
+    "type": "Code",
+    "date": "10/12/2024",
+    "image": "./media/thunbnails/MTGDeck.png",
+    "link": "https://people.rit.edu/~slt1494/235/DeckBuilder/deckbuild.html",
+    "skills": [
+      "Python"
+    ],
+    "apps/tools": [
+      "TouchDesigner"
+    ]
+  }
+]
