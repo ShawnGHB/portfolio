@@ -97,14 +97,63 @@ hr {
 
 #Cards #content img{
     height: 14.2rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
 .result{
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: .3rem;
+    flex-basis: 250px; /* Increased for better card width */
     flex-grow: 1;
+    margin: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* nav bar styling */
+nav.site-nav {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    max-width: 900px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+nav.site-nav ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav.site-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+nav.site-nav a:active {
+    transform: translateY(0);
 }
 
 /* Link Styling */

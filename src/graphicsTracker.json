@@ -1,0 +1,26 @@
+[
+  {
+    "title": "CSA x Locs Hair Care Workshop",
+    "date": "03/18/2026",
+    "image": "./media/thunbnails/JamVis.png",
+    "link": "https://people.rit.edu/~slt1494/NewMediaBlogs/Visualization.html",
+    "skills": [
+      "Python"
+    ],
+    "apps/tools": [
+      "TouchDesigner"
+    ]
+  },
+  {
+    "title": "Static Word Design: Melancholy",
+    "date": "10/12/2024",
+    "image": "./media/thunbnails/MTGDeck.png",
+    "link": "https://people.rit.edu/~slt1494/235/DeckBuilder/deckbuild.html",
+    "skills": [
+      "Python"
+    ],
+    "apps/tools": [
+      "TouchDesigner"
+    ]
+  }
+]
