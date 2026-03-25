@@ -1,6 +1,6 @@
 img {
     margin: 0 auto;
-    width: 20vw;
+    width: 18vw;
 }
 
 img#profilePic {
@@ -61,30 +61,49 @@ hr {
     display: grid;
     grid-template-areas: "headshot bio"
         "controls controls"
-        "projects projects";
+        "projects projects"
+        "graphics graphics";
     justify-content: center;
     align-items: center;
     align-content: space-between;
     border-left: 1px dashed #15E62A;
     border-right: 1px dashed #15E62A;
+    min-width: 800px;
+    width: 90%;
 }
 
 .headshot{
     grid-area: headshot;
+    max-width: 300px;
+    justify-self: center;
 }
 
 .bio{
     grid-area: bio;
+    max-width: 400px;
+    justify-self: center;
+}
+
+.bio p {
+    background-color: rgba(160, 95, 115, 0.3);
+    padding: 20px 20px;
+    border-radius: 8px;
+    margin: 0 auto;
 }
 
 .widgets {
     width: 48%;
     padding: 15px 6px;
     grid-area: controls;
+    display:none;
 }
 
 .box {
     grid-area: projects;
+}
+
+.gbox {
+    grid-area: graphics;
 }
 
 #Cards #content {
@@ -141,6 +160,7 @@ nav.site-nav a {
     text-decoration: none;
     font-family: "Raleway", sans-serif;
     font-weight: 600;
+    font-size: 1.3rem;
     padding: 0.4rem 0.9rem;
     border-radius: 6px;
     transition: background 0.2s ease, transform 0.2s ease;
