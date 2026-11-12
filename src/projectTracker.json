@@ -8,6 +8,7 @@
     "skills": [
       "Python"
     ],
+    "summary": "A visualization of the teacher to student ratio in Jamiaca using Python and  Touchdesigner",
     "apps/tools": [
       "TouchDesigner"
     ]
@@ -21,6 +22,7 @@
     "skills": [
       "Python"
     ],
+    "summary": "A Magic The GAthering Scryfall API website using Javascript and CSS",
     "apps/tools": [
       "TouchDesigner"
     ]

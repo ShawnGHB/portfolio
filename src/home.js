@@ -90,17 +90,113 @@ window.onload = (e) => {
         .then(response => response.json())
         .then(data => {
             projArr = data;
-            dataLoaded(data);
+            projectsLoaded
+        (data);
             // readAndLoadProjects();
         })
         .catch(error => console.error('Error loading projects:', error));
-
+    
+    fetch('/api/graphics')
+        .then(response => response.json())
+        .then(data => {
+            projArr = data;
+            graphicsLoaded(data);
+            // readAndLoadProjects();
+        })
+        .catch(error => console.error('Error loading projects:', error));
 }
 
-function dataLoaded(jD) {
-    // 8 - if there are no results/json found, print a message and return
+
+function graphicsLoaded(jD) {
+    //if there are no results/json found, print a message and return
     if (!jD || jD.length == 0) {
         document.querySelector("#status").innerHTML = "<b>'No results found for JSON'</b>";
+        return; // Bail out
+    }
+    //console.log(jD);
+
+    //Start building an HTML string we will display to the user
+    let results = jD;
+    //something to globally hold the data incase we need to search through it
+    searResults = results;
+    //console.log("results.length = " + results.length);
+    let bigString = "";
+
+    let limit = document.querySelector("#limit").value;
+
+    if (results.length < limit) {
+        limit = results.length;
+    }
+    //console.log(limit);
+
+    // loop through the array of results
+    for (let i = 0; i < limit; i++) {
+        let result = results[i];
+        let thumbNail; //will be assigned a image/color value after swtich
+
+        if (i < 6 && projArr.length <= 5) {
+            projArr[i] = result;
+            let store = JSON.stringify(projArr);
+            localStorage.setItem(cardsKey, store);
+            if (i == 5) {
+                //readAndLoadProjects();
+            }
+        }
+
+        // get the URL to the GIF/Image
+        thumbNail = result.image;
+
+        if (!thumbNail) thumbNail = "images/no-image-found.png";
+        
+
+        //grabs respecgtive properties
+        let name = result.title;
+        let type = result.type;
+        let link = result.link;
+        let date = result.date;
+
+        //changes background color based on rarity
+        let bgc = ""
+        switch (type) {
+            case "Creative":
+                bgc = "linear-gradient(to left, rgba(0, 80, 20, 0.19) 0%, rgba(255, 255, 153, 0.06) 100%)";
+                break;
+            case "Code":
+                bgc = "linear-gradient(to left, rgba(204, 0, 126, 0.1) 0%, rgba(250, 204, 255, 0.13) 100%)";
+                break;
+            case "Physical":
+                bgc = "linear-gradient(to left, rgba(208, 119, 29, 0.13) 0%, rgba(255, 245, 102, 0.11) 100%)";
+                break;
+            default:
+                //stays its typical gray
+                bgc = "rgba(249, 240, 188, 0.06)";
+                break;
+        }
+
+        bigString += `
+            <div class='result' id='project${i}' style="background: ${bgc}">
+                <h3>${name}</h3>
+                <a target='_blank' href='${link}'>
+                    <img src='${thumbNail}' alt='${name}' />
+                </a>
+                <div class='project-info'>
+                    <p>${type} ${date ? `• ${date}` : ""}</p>
+                </div>
+            </div>`;
+    }
+    // 16 - all done building the HTML - show it to the user!
+    document.querySelector("#gcontent").innerHTML = bigString;
+    document.querySelector("#gstatus").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
+    document.querySelector("#gcontent").style.overflowY = "scroll";
+    document.querySelector("#gcontent").style.height = "25rem";
+}
+
+
+
+function projectsLoaded(jD) {
+    // 8 - if there are no results/json found, print a message and return
+    if (!jD || jD.length == 0) {
+        document.querySelector("#gstatus").innerHTML = "<b>'No results found for JSON'</b>";
         return; // Bail out
     }
     //console.log(jD);
@@ -112,7 +208,7 @@ function dataLoaded(jD) {
     //console.log("results.length = " + results.length);
     let bigString = "";
 
-    let limit = document.querySelector("#limit").value;
+    let limit = document.querySelector("#glimit").value;
 
     if (results.length < limit) {
         limit = results.length;
@@ -151,13 +247,13 @@ function dataLoaded(jD) {
         let bgc = ""
         switch (type) {
             case "Creative":
-                bgc = "linear-gradient(to left, rgba(0, 80, 20, 0.32) 0%, rgba(255, 255, 153, 0.12) 100%)";
+                bgc = "linear-gradient(to left, rgba(0, 80, 20, 0.19) 0%, rgba(255, 255, 153, 0.06) 100%)";
                 break;
             case "Code":
-                bgc = "linear-gradient(to left, rgba(204, 0, 126, 0.1) 0%, rgba(250, 204, 255, 0.37) 100%)";
+                bgc = "linear-gradient(to left, rgba(204, 0, 126, 0.1) 0%, rgba(250, 204, 255, 0.13) 100%)";
                 break;
             case "Physical":
-                bgc = "linear-gradient(to left, rgba(208, 119, 29, 0.23) 0%, rgba(255, 245, 102, 0.11) 100%)";
+                bgc = "linear-gradient(to left, rgba(208, 119, 29, 0.13) 0%, rgba(255, 245, 102, 0.11) 100%)";
                 break;
             default:
                 //stays its typical gray
@@ -177,10 +273,10 @@ function dataLoaded(jD) {
             </div>`;
     }
     // 16 - all done building the HTML - show it to the user!
-    document.querySelector("#content").innerHTML = bigString;
-    document.querySelector("#status").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
-    document.querySelector("#content").style.overflowY = "scroll";
-    document.querySelector("#content").style.height = "25rem";
+    document.querySelector("#gcontent").innerHTML = bigString;
+    document.querySelector("#gstatus").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
+    document.querySelector("#gcontent").style.overflowY = "scroll";
+    document.querySelector("#gcontent").style.height = "25rem";
 }
 
 function dataError(e) {

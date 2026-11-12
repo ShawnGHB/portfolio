@@ -2,11 +2,25 @@
   {
     "title": "CSA x Locs Hair Care Workshop",
     "date": "03/18/2026",
-    "image": "./media/thunbnails/JamVis.png",
-    "link": "https://people.rit.edu/~slt1494/NewMediaBlogs/Visualization.html",
+    "image": "./media/designs/UnravelingRoots.gif",
+    "link": "blank",
     "skills": [
       "Python"
     ],
+    "summary": "A workshop flyer created for Caribbean Students and Curly haired students",
+    "apps/tools": [
+      "TouchDesigner"
+    ]
+  },
+  {
+    "title": "CSA x LASA Event Flyer",
+    "date": "03/18/2026",
+    "image": "./media/designs/CuentaMelo.mp4",
+    "link": "blank",
+    "skills": [
+      "Python"
+    ],
+    "summary": "A flyer made for a secret/gossip event hosted by Latin American Student Association and Caribbean Student Association",
     "apps/tools": [
       "TouchDesigner"
     ]
@@ -14,13 +28,29 @@
   {
     "title": "Static Word Design: Melancholy",
     "date": "10/12/2024",
-    "image": "./media/thunbnails/MTGDeck.png",
-    "link": "https://people.rit.edu/~slt1494/235/DeckBuilder/deckbuild.html",
+    "image": "./media/designs/melancholy.gif",
+    "link": "blank",
     "skills": [
-      "Python"
+      "Adobe, Emotional Design"
     ],
+    "summary": "A design centered around the word Melancholy using original designs",
     "apps/tools": [
-      "TouchDesigner"
+      "Photoshop",
+      "Illustrator"
+    ]
+  },
+  {
+    "title": "Static Word Design: Opressive",
+    "date": "10/12/2024",
+    "image": "./media/designs/opressive.jpg",
+    "link": "blank",
+    "skills": [
+      "Adobe, Emotional Design"
+    ],
+    "summary": "A design centered around the word Opressive using original designs",
+    "apps/tools": [
+      "Photoshop",
+      "Illustrator"
     ]
   }
 ]

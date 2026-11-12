@@ -121,6 +121,22 @@ hr {
     border-radius: 8px 8px 0 0;
 }
 
+#Cards #gcontent {
+    display: flex;
+    border-top: .5px solid #15E62A;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: .3rem;
+}
+
+#Cards #gcontent img{
+    height: 14.2rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+
 .result{
     display: flex;
     flex-direction: column;
