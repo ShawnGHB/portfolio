@@ -82,7 +82,8 @@ function readAndLoadProjects() {
 //API Functionality
 // 1
 window.onload = (e) => {
-    if (projArr == null) projArr = [];//sets deck to an array value if it doesn't pull any data
+    if (projArr == null) projArr = [];
+    //sets deck to an array value if it doesn't pull any data
     // checkAndLoadDeck();
     // document.querySelector("#search").onclick = searchButtonClicked;
 
@@ -90,8 +91,7 @@ window.onload = (e) => {
         .then(response => response.json())
         .then(data => {
             projArr = data;
-            projectsLoaded
-        (data);
+            projectsLoaded(data);
             // readAndLoadProjects();
         })
         .catch(error => console.error('Error loading projects:', error));
@@ -208,7 +208,7 @@ function projectsLoaded(jD) {
     //console.log("results.length = " + results.length);
     let bigString = "";
 
-    let limit = document.querySelector("#glimit").value;
+    let limit = document.querySelector("#limit").value;
 
     if (results.length < limit) {
         limit = results.length;
@@ -273,10 +273,10 @@ function projectsLoaded(jD) {
             </div>`;
     }
     // 16 - all done building the HTML - show it to the user!
-    document.querySelector("#gcontent").innerHTML = bigString;
-    document.querySelector("#gstatus").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
-    document.querySelector("#gcontent").style.overflowY = "scroll";
-    document.querySelector("#gcontent").style.height = "25rem";
+    document.querySelector("#content").innerHTML = bigString;
+    document.querySelector("#status").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
+    document.querySelector("#content").style.overflowY = "scroll";
+    document.querySelector("#content").style.height = "25rem";
 }
 
 function dataError(e) {
