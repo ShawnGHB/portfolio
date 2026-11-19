@@ -5,11 +5,11 @@
     "image": "./media/designs/UnravelingRoots.gif",
     "link": "blank",
     "skills": [
-      "Python"
+      "Canva"
     ],
     "summary": "A workshop flyer created for Caribbean Students and Curly haired students",
     "apps/tools": [
-      "TouchDesigner"
+      "Canva"
     ]
   },
   {
@@ -18,11 +18,11 @@
     "image": "./media/designs/CuentaMelo.mp4",
     "link": "blank",
     "skills": [
-      "Python"
+      "Canva"
     ],
     "summary": "A flyer made for a secret/gossip event hosted by Latin American Student Association and Caribbean Student Association",
     "apps/tools": [
-      "TouchDesigner"
+      "Canva"
     ]
   },
   {
@@ -52,5 +52,19 @@
       "Photoshop",
       "Illustrator"
     ]
+  },
+  {
+    "title": "Whine Up With CSA X AFDC",
+    "date": "03/23/2025",
+    "image": "./media/designs/WhineUPxAFDC.png",
+    "link": "blank",
+    "skills": [
+      "Canva, Layered Design"
+    ],
+    "summary": "A design for a dance workshop with caribbean and afro dance styles",
+    "apps/tools": [
+      "Canva"
+    ]
   }
+  
 ]

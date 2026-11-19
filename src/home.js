@@ -37,22 +37,22 @@ function readAndLoadProjects() {
             let type = card.type;
 
             //changes background color based on type of project
-        let bgc = ""
-        switch (type) {
-            case "Creative":
-                bgc = "linear-gradient(to left, rgba(0, 80, 20, 0.57) 0%, rgba(255, 255, 153, 0.474) 100%)";
-                break;
-            case "Code":
-                bgc = "linear-gradient(to left, rgba(204, 0, 126, 0.57) 0%, rgba(250, 204, 255, 0.37) 100%)";
-                break;
-            case "Physical":
-                bgc = "linear-gradient(to left, rgba(208, 119, 29, 0.57) 0%, rgba(255, 245, 102, 0.43) 100%)";
-                break;
-            default:
-                //stays its typical gray
-                bgc = "rgba(249, 240, 188, 0.174)";
-                break;
-        }
+            let bgc = ""
+            switch (type) {
+                case "Creative":
+                    bgc = "linear-gradient(to left, rgba(0, 80, 20, 0.57) 0%, rgba(255, 255, 153, 0.474) 100%)";
+                    break;
+                case "Code":
+                    bgc = "linear-gradient(to left, rgba(204, 0, 126, 0.57) 0%, rgba(250, 204, 255, 0.37) 100%)";
+                    break;
+                case "Physical":
+                    bgc = "linear-gradient(to left, rgba(208, 119, 29, 0.57) 0%, rgba(255, 245, 102, 0.43) 100%)";
+                    break;
+                default:
+                    //stays its typical gray
+                    bgc = "rgba(249, 240, 188, 0.174)";
+                    break;
+            }
             // get the URL to the project link
             let url = card.link;
 
@@ -95,7 +95,7 @@ window.onload = (e) => {
             // readAndLoadProjects();
         })
         .catch(error => console.error('Error loading projects:', error));
-    
+
     fetch('/api/graphics')
         .then(response => response.json())
         .then(data => {
@@ -108,12 +108,16 @@ window.onload = (e) => {
 
 
 function graphicsLoaded(jD) {
+    //test if it's a graphic or video
+    let projType = "graphic";
+
     //if there are no results/json found, print a message and return
     if (!jD || jD.length == 0) {
         document.querySelector("#status").innerHTML = "<b>'No results found for JSON'</b>";
         return; // Bail out
     }
     //console.log(jD);
+
 
     //Start building an HTML string we will display to the user
     let results = jD;
@@ -131,6 +135,7 @@ function graphicsLoaded(jD) {
 
     // loop through the array of results
     for (let i = 0; i < limit; i++) {
+        let projType = "graphic";
         let result = results[i];
         let thumbNail; //will be assigned a image/color value after swtich
 
@@ -147,7 +152,8 @@ function graphicsLoaded(jD) {
         thumbNail = result.image;
 
         if (!thumbNail) thumbNail = "images/no-image-found.png";
-        
+
+        if (thumbNail.includes("mp4")) { projType = "video" };
 
         //grabs respecgtive properties
         let name = result.title;
@@ -173,22 +179,37 @@ function graphicsLoaded(jD) {
                 break;
         }
 
-        bigString += `
+        if (projType != "video") {
+            bigString += `
             <div class='result' id='project${i}' style="background: ${bgc}">
-                <h3>${name}</h3>
-                <a target='_blank' href='${link}'>
-                    <img src='${thumbNail}' alt='${name}' />
-                </a>
-                <div class='project-info'>
-                    <p>${type} ${date ? `• ${date}` : ""}</p>
-                </div>
+                <figure>
+                    <a target='_blank' href='${link}'>
+                        <img src='${thumbNail}' alt='${name}' />
+                    </a>
+                    <figcaption>
+                        <h3>${name}</h3>
+                        <p>${type} ${date ? `• ${date}` : ""}</p>
+                    </figcaption>
+                </figure>
             </div>`;
+        } else {
+            bigString +=
+            `<div class='result' id='project${i}' style="background: ${bgc}">
+                <figure>
+                        <video src='${thumbNail}' alt='${name}' autoplay muted loop playsinline> </video>
+                    <figcaption>
+                        <h3>${name}</h3>
+                        <p>${type} ${date ? `• ${date}` : ""}</p>
+                    </figcaption>
+                </figure>
+            </div>`
+        }
     }
     // 16 - all done building the HTML - show it to the user!
     document.querySelector("#gcontent").innerHTML = bigString;
-    document.querySelector("#gstatus").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
-    document.querySelector("#gcontent").style.overflowY = "scroll";
-    document.querySelector("#gcontent").style.height = "25rem";
+    document.querySelector("#gstatus").innerHTML = `<p><i><b>There are ${results.length} graphics</b></i></p>`;
+    // document.querySelector("#gcontent").style.overflowY = "scroll";
+    // document.querySelector("#gcontent").style.height = "25rem";
 }
 
 
@@ -218,7 +239,6 @@ function projectsLoaded(jD) {
     // loop through the array of results
     for (let i = 0; i < limit; i++) {
 
-
         let result = results[i];
         let thumbNail; //will be assigned a image/color value after swtich
 
@@ -235,13 +255,15 @@ function projectsLoaded(jD) {
         thumbNail = result.image;
 
         if (!thumbNail) thumbNail = "images/no-image-found.png";
-        
+
 
         //grabs respecgtive properties
         let name = result.title;
         let type = result.type;
         let link = result.link;
         let date = result.date;
+
+
 
         //changes background color based on rarity
         let bgc = ""
@@ -260,21 +282,24 @@ function projectsLoaded(jD) {
                 bgc = "rgba(249, 240, 188, 0.06)";
                 break;
         }
-
-        bigString += `
+            bigString += `
             <div class='result' id='project${i}' style="background: ${bgc}">
-                <a target='_blank' href='${link}'>
-                    <img src='${thumbNail}' alt='${name}' />
-                </a>
-                <div class='project-info'>
-                    <h3>${name}</h3>
-                    <p>${type} ${date ? `• ${date}` : ""}</p>
-                </div>
-            </div>`;
+                <figure>
+                    <a target='_blank' href='${link}'>
+                        <img src='${thumbNail}' alt='${name}' />
+                    </a>
+                    <figcaption>
+                        <h3>${name}</h3>
+                        <p>${type} ${date ? `• ${date}` : ""}</p>
+                    </figcaption>
+                </figure>
+            </div>`
+        
+
     }
     // 16 - all done building the HTML - show it to the user!
     document.querySelector("#content").innerHTML = bigString;
-    document.querySelector("#status").innerHTML = `<p><i><b>There are ${results.length} results</b></i></p>`;
+    document.querySelector("#status").innerHTML = `<p><i><b>There are ${results.length} projects</b></i></p>`;
     document.querySelector("#content").style.overflowY = "scroll";
     document.querySelector("#content").style.height = "25rem";
 }
